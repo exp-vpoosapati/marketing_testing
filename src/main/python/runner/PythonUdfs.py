@@ -11,6 +11,18 @@ class PythonUdfs:
     def __init__(self):
         pass
 
+    def is_purchase_event(self, event_list):
+        if event_list is None:
+            return 0
+        if (event_list == ''):
+            return 0
+        event_list_split = event_list.split(',')
+        for elem in event_list_split:
+            if elem == '1':
+                return 1
+        return 0
+
+
     def convert_to_se(self, referral_string):
         search_engine_list = ['google','bing','yahoo']
         if len(referral_string) == 0:
@@ -22,9 +34,8 @@ class PythonUdfs:
             elements_split = referral_cleaned.split('.')
             print (elements_split)
             for element in elements_split:
-                print (element)
                 if element.lower() in search_engine_list:
-                    return (element.lower())
+                    return (element.lower()+'.com')
         return None
 
     # UDF for revenue

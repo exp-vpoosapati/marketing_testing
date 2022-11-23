@@ -29,10 +29,27 @@ class PythonUdfRegister:
                 elements_split = referral_cleaned.split('.')
                 for element in elements_split:
                     if element.lower() in search_engine_list:
-                        return (element.lower())
+                        return (element.lower()+'.com')
             return None
 
         self.sparkSession.udf.register("gen_searchengine_udf", convert_to_se)
+
+        '''
+         Parses event list and confirms if it is indeed a purchase
+            generates either 1 or 0
+        '''
+        def is_purchase_event(event_list):
+            if event_list is None:
+                return 0
+            if (event_list == ''):
+                return 0
+            event_list_split = event_list.split(',')
+            for elem in event_list_split:
+                if elem == '1':
+                    return 1
+            return 0
+
+        self.sparkSession.udf.register("is_purchase_event", is_purchase_event)
 
         ''' UDF to extract revenue from the original string based value.
         '''
