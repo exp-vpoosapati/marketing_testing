@@ -1,6 +1,5 @@
-# Aesthetic ASCII
+# ADOBE Marketing Data Example
 
-Generate **A E S T H E T I C** ASCII art.
 
 ## Instructions
 
@@ -15,12 +14,8 @@ pip install ADOBE
 ```python
 from aesthetic_ascii import synthesize
 
-# initialize drive object (to generate visuals)
-drive = synthesize.Drive()
-# generate a ASCII visual (dark_mode optional)
-drive.generate(dark_mode=True)
-# save to png
-drive.to_png('aesthetic.png')
+pass initial source file as argument to the script
+This will automatically save the final result into an ouptut file with required parameters.
+
 ```
 
-3. Ride the space skyway home to 80s Miami
