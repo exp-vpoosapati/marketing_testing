@@ -42,8 +42,10 @@ class MarketingDataProcessor:
                             split(product_list,';') as product_array,
                             trim(split(referrer,'.//')[1]) as referral_cleaned,
                             gen_searchengine_udf(referrer) as final_referral,
-                            gen_revenue(product_list) as total_revenue,
-                            generate_keyword_udf(referrer) as keyword
+                            --gen_revenue(product_list) as total_revenue,
+                            generate_keyword_udf(referrer) as keyword,
+                            CASE WHEN is_purchase_event(event_list) = 1 THEN  gen_revenue(product_list)
+                                ELSE 0 END as total_revenue
                     FROM {view}
                     ORDER BY 1 ASC, 2 ASC
                     """.format(view=view_name)
