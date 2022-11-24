@@ -16,7 +16,6 @@ import json
 import boto3
 
 
-#client = boto3.client('emr', region_name='us-west-2',aws_access_key_id='AKIAVZQYTUFPUDGYQIMB',aws_secret_access_key='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')
 client = boto3.client('emr')
 s3Client = boto3.client('s3')
 
